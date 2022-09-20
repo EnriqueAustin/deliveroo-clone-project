@@ -11,6 +11,7 @@ import {
 } from 'react-native-heroicons/outline';
 
 import Categories from '../components/Categories';
+import FeaturedRow from '../components/FeaturedRow';
 
 // create a component
 const HomeScreen = () => {
@@ -62,9 +63,28 @@ const HomeScreen = () => {
             <ScrollView className='bg-gray-100'>
 
                 {/* Categories */}
-                
+                <Categories />
 
-                {/* Featured Row */}
+                {/* Featured */}
+                <FeaturedRow 
+                    id='1'
+                    title='Featured'
+                    description='Paid placements from our partners'
+                />
+
+                {/* Tasty Discount */}
+                <FeaturedRow 
+                    id='2'
+                    title='Featured'
+                    description='Paid placements from our partners'
+                />
+
+                {/* Offers near you */}
+                <FeaturedRow 
+                    id='3'
+                    title='Featured'
+                    description='Paid placements from our partners'
+                />
             </ScrollView>
         </SafeAreaView>
     );
