@@ -60,7 +60,7 @@ const HomeScreen = () => {
             </View>
 
             {/* Body */}
-            <ScrollView className='bg-gray-100'>
+            <ScrollView className='bg-gray-100 pb-20'>
 
                 {/* Categories */}
                 <Categories />
@@ -75,16 +75,17 @@ const HomeScreen = () => {
                 {/* Tasty Discount */}
                 <FeaturedRow 
                     id='2'
-                    title='Featured'
+                    title='Tasty Discounts'
                     description='Paid placements from our partners'
                 />
 
                 {/* Offers near you */}
                 <FeaturedRow 
                     id='3'
-                    title='Featured'
+                    title='Offers near you!'
                     description='Paid placements from our partners'
                 />
+                <View className="m-16" />
             </ScrollView>
         </SafeAreaView>
     );
