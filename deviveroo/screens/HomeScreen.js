@@ -86,25 +86,16 @@ const HomeScreen = () => {
                 <Categories />
 
                 {/* Featured */}
-                <FeaturedRow 
-                    id='1'
-                    title='Featured'
-                    description='Paid placements from our partners'
-                />
 
-                {/* Tasty Discount */}
-                <FeaturedRow 
-                    id='2'
-                    title='Tasty Discounts'
-                    description='Paid placements from our partners'
-                />
+                {featuredCategories?.map(category => (
+                    <FeaturedRow 
+                        key={category._id}
+                        id={category._id}
+                        title={category.name}
+                        description={category.short_description}
+                    />
+                ))}
 
-                {/* Offers near you */}
-                <FeaturedRow 
-                    id='3'
-                    title='Offers near you!'
-                    description='Paid placements from our partners'
-                />
                 <View className="m-16" />
             </ScrollView>
         </SafeAreaView>
