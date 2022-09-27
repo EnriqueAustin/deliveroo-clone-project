@@ -1,6 +1,6 @@
 //import liraries
 import { useNavigation } from '@react-navigation/native';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { View, Text, Image, TextInput, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -12,16 +12,36 @@ import {
 
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
+import sanityClient from '../sanity';
 
 // create a component
 const HomeScreen = () => {
     const navigation = useNavigation();
+    const [featuredCategories, setFeaturedCategories] = useState([]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, [])
+
+    useEffect(() => {
+        sanityClient.fetch(
+            `
+                *[_type == "featured"] {
+                    ...,
+                restaurants[]->{
+                    ...,
+                    dishes[]->
+                }
+                }
+            `
+        ).then(data => {
+            setFeaturedCategories(data);
+        });
+    }, []);
+
+    console.log(featuredCategories);
 
     return (
         <SafeAreaView className='bg-white flex-col'>
