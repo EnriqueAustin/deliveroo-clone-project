@@ -64,6 +64,7 @@ const FeaturedRow = ({id, title, description, featuredCategory}) => {
                         lat={restaurant.lat}
                     />
                 ))}
+
             </ScrollView>
         </View>
     );
