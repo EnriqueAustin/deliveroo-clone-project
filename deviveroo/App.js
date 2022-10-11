@@ -4,6 +4,8 @@ import HomeScreen from './screens/HomeScreen';
 import ResturantScreen from './screens/ResturantScreen';
 
 import { NativeWindStyleSheet } from "nativewind";
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,10 +16,12 @@ NativeWindStyleSheet.setOutput({
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={HomeScreen} />
-        <Stack.Screen name='Restaurant' component={ResturantScreen} />
-      </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator>
+          <Stack.Screen name='Home' component={HomeScreen} />
+          <Stack.Screen name='Restaurant' component={ResturantScreen} />
+        </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 }
