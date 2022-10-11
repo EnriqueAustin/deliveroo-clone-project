@@ -1,13 +1,16 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 // create a component
-const DishRow = () => {
+const DishRow = ({id, name, description, price, image }) => {
     return (
-        <View>
-            <Text>DishRow</Text>
-        </View>
+        <TouchableOpacity>
+            <View>
+                <Text className='text-lg mb-1'>{name}</Text>
+                <Text className='text-gray-400'>{description}</Text>
+            </View>
+        </TouchableOpacity>
     );
 };
 
