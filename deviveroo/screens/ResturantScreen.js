@@ -11,6 +11,7 @@ import {
 } from 'react-native-heroicons/solid';
 import { urlFor } from '../sanity';
 import DishRow from '../components/DishRow';
+import BasketIcon from '../components/BasketIcon';
 
 // create a component
 const ResturantScreen = () => {
@@ -37,6 +38,9 @@ const ResturantScreen = () => {
     }, []);
 
     return (
+        <>
+        <BasketIcon />
+        
         <ScrollView>
             <View className='relative'>
                 <Image 
@@ -80,7 +84,7 @@ const ResturantScreen = () => {
                     <ChevronRightIcon color='#00CCBB' />
                 </TouchableOpacity>
 
-                <View>
+                <View className='pb-36'>
                     <Text className='px-4 pt-6 mb-3 font-bold text-xl'>
                         Menu
                     </Text>
@@ -99,6 +103,7 @@ const ResturantScreen = () => {
                 </View>
             </View>
         </ScrollView>
+        </>
     );
 };
 

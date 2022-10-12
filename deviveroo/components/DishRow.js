@@ -58,8 +58,9 @@ const DishRow = ({ id, name, description, price, image }) => {
                     <TouchableOpacity
                         onPress={removeItemFromBasket}
                     >
-                        <MinusCircleIcon 
-                            color={"#00CCBB"}
+                        <MinusCircleIcon
+                            disabled={!items.length <= 0}
+                            color={items.length > 0 ? "#00CCBB" : "gray"}
                             size={40}
                         />
                     </TouchableOpacity>
