@@ -1,6 +1,6 @@
 //import liraries
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React, { Component, useLayoutEffect } from 'react';
+import React, { Component, useLayoutEffect, useEffect } from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { 
     ArrowLeftIcon,
@@ -12,10 +12,13 @@ import {
 import { urlFor } from '../sanity';
 import DishRow from '../components/DishRow';
 import BasketIcon from '../components/BasketIcon';
+import { useDispatch } from 'react-redux';
+import { setRestaurant } from '../features/restaurantSlice';
 
 // create a component
 const ResturantScreen = () => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     const {
         params: {
@@ -30,6 +33,25 @@ const ResturantScreen = () => {
             long,
             lat,
     }} = useRoute();
+
+    // send data from the restaurant to the redux restaurantSlice for storage
+    useEffect(() => {
+      dispatch(
+        setRestaurant({
+            id,
+            imgUrl,
+            title,
+            rating,
+            genre,
+            address,
+            short_description,
+            dishes,
+            long,
+            lat,
+        })
+      );
+    }, [dispatch]);
+    
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -84,7 +106,7 @@ const ResturantScreen = () => {
                     <ChevronRightIcon color='#00CCBB' />
                 </TouchableOpacity>
 
-                <View className='pb-36'>
+                <View className='pb-36 bg-gray-100'>
                     <Text className='px-4 pt-6 mb-3 font-bold text-xl'>
                         Menu
                     </Text>
