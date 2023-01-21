@@ -5,11 +5,14 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { XCircleIcon } from 'react-native-heroicons/outline';
 import * as Progress from "react-native-progress";
+import { useSelector } from 'react-redux';
+import { selectRestaurant } from "../features/restaurantSlice";
 
 
 // create a component
 const DeliveryScreen = () => {
     const navigation = useNavigation();
+    const restaurant = useSelector(selectRestaurant);
 
     return (
         <View className='bg-[#00CCBB] flex-1'>
@@ -38,6 +41,10 @@ const DeliveryScreen = () => {
                     </View>
 
                     <Progress.Bar size={30} color="#00CCBB" indeterminate={true} />
+
+                    <Text className="mt-3 text-gray-500">
+                        Your order at {restaurant.title} is being prepared
+                    </Text>
                 </View>
             </SafeAreaView>
         </View>
