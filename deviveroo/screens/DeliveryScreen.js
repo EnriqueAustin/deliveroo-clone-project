@@ -7,6 +7,8 @@ import { XCircleIcon } from 'react-native-heroicons/outline';
 import * as Progress from "react-native-progress";
 import { useSelector } from 'react-redux';
 import { selectRestaurant } from "../features/restaurantSlice";
+import MapView from 'react-native-maps';
+import { Marker } from 'react-native-svg';
 
 
 // create a component
@@ -48,8 +50,26 @@ const DeliveryScreen = () => {
                 </View>
             </SafeAreaView>
 
-            <MapView>
-                
+            <MapView
+                initialRegion={{
+                    latitude: restaurant.lat,
+                    longitude: restaurant.long,
+                    latitudeDelta: 0.005,
+                    longitudeDelta: 0.005,
+                }}
+                className="flex-1 -mt-10 z-0"
+                mapType='mutedStandard'
+            >
+                <Marker 
+                    coordinate={{
+                        latitude: restaurant.lat,
+                        longitude: restaurant.long,
+                    }}
+                    title={restaurant.title}
+                    description={restaurant.short_description}
+                    identifier="origin"
+                    pinColor="00CCBB"
+                />    
             </MapView>
         </View>
     );
