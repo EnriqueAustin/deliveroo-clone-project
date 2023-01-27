@@ -58,9 +58,9 @@ const DeliveryScreen = () => {
                     longitudeDelta: 0.005,
                 }}
                 className="flex-1 -mt-10 z-0"
-                mapType='mutedStandard'
+                mapType="mutedStandard"
             >
-                <Marker 
+                <Marker
                     coordinate={{
                         latitude: restaurant.lat,
                         longitude: restaurant.long,
@@ -68,9 +68,21 @@ const DeliveryScreen = () => {
                     title={restaurant.title}
                     description={restaurant.short_description}
                     identifier="origin"
-                    pinColor="00CCBB"
-                />    
+                    pinColor="#00CCBB"
+                />
+
             </MapView>
+            <SafeAreaView className="bg-white flex-row items-center space-x-5 h-28" >
+                <Image 
+                    source={{
+                        uri: "https://links.papareact.com/wru",
+                    }}
+                    className="h-12 bg-gray-300 p-4 rounded-full ml-5"
+                />
+                <View>
+                    <Text></Text>
+                </View>
+            </SafeAreaView>
         </View>
     );
 };
